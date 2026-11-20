@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.handsonovergeared.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AnvilCoolingMixin"
+  ],
+  "client": [
+    "AnvilRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

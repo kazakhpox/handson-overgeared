@@ -1,0 +1,345 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Pocky-l/diegesis/main/docs/schema/scene.schema.json",
+  "$comment": "Overgeared's smithing anvil (model facing north: long along z, top at y 16, x 3..13 for iron, 2..14 for stone). Overgeared turns the anvil a quarter clockwise from the player who builds it, so the smith stands on the scene's +X side: the camera looks from there, the horn (z 0) on the screen's right, the heel (z 16) on its left. The grid's first row lies farthest away, its first column on the left, as in Overgeared's screen.",
+  "work_plane": 16,
+  "idle_visible": true,
+  "camera": {
+    "position": [
+      41,
+      40,
+      8
+    ],
+    "target": [
+      8,
+      19.6,
+      8
+    ],
+    "fov": 40,
+    "interactive_at": 0.7
+  },
+  "interface": {
+    "hide_player": true,
+    "inventory_panel": false
+  },
+  "inventory_drawer": {
+    "side": "bottom",
+    "style": "minimal",
+    "always_open": true,
+    "compact": true,
+    "background": "#00000000",
+    "slot_color": "#8C1E140C",
+    "carry_size": 3
+  },
+  "nodes": [
+    {
+      "$comment": "The anvil's face: a click with the hammer in hand strikes the work, with an empty hand takes up a hammer. It lies just under the slots, so the items on the grid stay reachable.",
+      "id": "work",
+      "collider": {
+        "from": [
+          3,
+          13.5,
+          0
+        ],
+        "to": [
+          13,
+          15.9,
+          16
+        ]
+      },
+      "takes_items": true
+    },
+    {
+      "id": "grid_0",
+      "pos": [
+        5.3,
+        16.02,
+        10.7
+      ],
+      "slot": {
+        "slot": "grid[0]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_1",
+      "pos": [
+        5.3,
+        16.02,
+        8.0
+      ],
+      "slot": {
+        "slot": "grid[1]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_2",
+      "pos": [
+        5.3,
+        16.02,
+        5.3
+      ],
+      "slot": {
+        "slot": "grid[2]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_3",
+      "pos": [
+        8.0,
+        16.02,
+        10.7
+      ],
+      "slot": {
+        "slot": "grid[3]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_4",
+      "pos": [
+        8.0,
+        16.02,
+        8.0
+      ],
+      "slot": {
+        "slot": "grid[4]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_5",
+      "pos": [
+        8.0,
+        16.02,
+        5.3
+      ],
+      "slot": {
+        "slot": "grid[5]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_6",
+      "pos": [
+        10.7,
+        16.02,
+        10.7
+      ],
+      "slot": {
+        "slot": "grid[6]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_7",
+      "pos": [
+        10.7,
+        16.02,
+        8.0
+      ],
+      "slot": {
+        "slot": "grid[7]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "grid_8",
+      "pos": [
+        10.7,
+        16.02,
+        5.3
+      ],
+      "slot": {
+        "slot": "grid[8]",
+        "size": 2.6,
+        "item_size": 2.4,
+        "counts": "hover",
+        "idle_highlight": 0.25,
+        "count_facing": "camera"
+      }
+    },
+    {
+      "$comment": "The hammer rests on the anvil's heel; Overgeared's own hammer slot.",
+      "id": "hammer_rest",
+      "pos": [
+        8,
+        16.02,
+        14.4
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "slot": {
+        "slot": "hammer[0]",
+        "size": 3.2,
+        "item_size": 4.2,
+        "counts": "never",
+        "ghost": [
+          "#overgeared:smithing_hammers"
+        ],
+        "ghost_alpha": 0.25
+      }
+    },
+    {
+      "$comment": "The finished piece hovers over the horn; while the grid makes something, its ghost shows there.",
+      "id": "result",
+      "pos": [
+        8,
+        16.6,
+        1.6
+      ],
+      "slot": {
+        "slot": "result[0]",
+        "display": "floating",
+        "size": 3.6,
+        "item_size": 3.4,
+        "counts": "hover",
+        "count_facing": "camera"
+      }
+    },
+    {
+      "$comment": "The blueprint, pinned in the air past the heel; hidden on anvils without a blueprint slot.",
+      "id": "blueprint",
+      "pos": [
+        8,
+        19.5,
+        17.6
+      ],
+      "slot": {
+        "slot": "blueprint[0]",
+        "display": "floating",
+        "size": 3.2,
+        "item_size": 3.0,
+        "counts": "never",
+        "ghost": [
+          "overgeared:blueprint"
+        ],
+        "ghost_alpha": 0.3,
+        "idle_highlight": 0.2
+      }
+    },
+    {
+      "$comment": "The hammer drawn by the scene: the pivot is its grip, turned about x (the camera's line of sight) to swing it; the hammer faces the camera.",
+      "id": "hammer_pivot",
+      "pos": [
+        0,
+        0,
+        0
+      ],
+      "pickable": false,
+      "children": [
+        {
+          "id": "hammer",
+          "rotation": [
+            0,
+            90,
+            0
+          ],
+          "scale": 0.44,
+          "pickable": false,
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "$comment": "The rhythm: a plate over the anvil, drawn by code (RhythmBar), with its marker.",
+      "id": "bar",
+      "pos": [
+        8,
+        24.6,
+        8
+      ],
+      "pickable": false,
+      "hidden": true,
+      "children": [
+        {
+          "id": "marker",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "pickable": false,
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "id": "label",
+      "pos": [
+        8,
+        27.3,
+        8
+      ],
+      "pickable": false
+    },
+    {
+      "id": "popup",
+      "pos": [
+        8,
+        20.4,
+        10.2
+      ],
+      "pickable": false
+    },
+    {
+      "$comment": "Embers off hot metal on the anvil.",
+      "id": "embers",
+      "pos": [
+        8,
+        16.4,
+        8
+      ],
+      "pickable": false,
+      "emitter": {
+        "particle": "diegesis:spark",
+        "rate": 3,
+        "velocity": [
+          0,
+          9,
+          0
+        ],
+        "spread": 2.6,
+        "color": "#FFFF8A2A",
+        "scale": 0.7,
+        "enabled": false
+      }
+    }
+  ]
+}

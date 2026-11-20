@@ -1,0 +1,11 @@
+{
+  "handson_overgeared.hint.strike": "Take the hammer and strike the work on the anvil",
+  "handson_overgeared.hint.rhythm": "Strike when the marker is in the zone: gold is perfect",
+  "handson_overgeared.hint.no_hammer": "You need a smithing hammer",
+  "handson_overgeared.hint.empty": "Lay the metal on the anvil first",
+  "handson_overgeared.hint.take_result": "Done! Take the piece from over the horn",
+  "handson_overgeared.label.forging": "%s / %s",
+  "handson_overgeared.label.recipe": "%s · %s hits",
+  "handson_overgeared.forged.done": "Done!",
+  "handson_overgeared.forged.failed": "Failed!"
+}

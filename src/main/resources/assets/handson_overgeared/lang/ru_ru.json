@@ -1,0 +1,11 @@
+{
+  "handson_overgeared.hint.strike": "Возьмите молот и бейте по заготовке на наковальне",
+  "handson_overgeared.hint.rhythm": "Бейте, когда метка в зоне: золотая — идеально",
+  "handson_overgeared.hint.no_hammer": "Нужен кузнечный молот",
+  "handson_overgeared.hint.empty": "Сначала положите металл на наковальню",
+  "handson_overgeared.hint.take_result": "Готово! Заберите изделие над рогом наковальни",
+  "handson_overgeared.label.forging": "%s / %s",
+  "handson_overgeared.label.recipe": "%s · ударов: %s",
+  "handson_overgeared.forged.done": "Готово!",
+  "handson_overgeared.forged.failed": "Брак!"
+}

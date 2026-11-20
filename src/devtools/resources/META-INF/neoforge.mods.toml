@@ -1,0 +1,16 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="handson_overgeared_devtools"
+version="0.0.0"
+displayName="Hands-On Overgeared dev tools"
+description='''Screenshots of the anvil station for development.'''
+
+[[dependencies.handson_overgeared_devtools]]
+    modId="handson_overgeared"
+    type="required"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="CLIENT"
