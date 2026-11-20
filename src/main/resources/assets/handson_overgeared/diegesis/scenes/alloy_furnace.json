@@ -1,0 +1,250 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Pocky-l/diegesis/main/docs/schema/scene.schema.json",
+  "$comment": "Overgeared's alloy furnace, worked as the furnaces of Hands-On Vanilla. The block is hidden while somebody works at it and the scene draws it with its mouth open (x 3-13, y 3-12, 12 deep), the door hung on the mouth's left. What smelts lies on the grate, the fuel on the coals under it at the front, and the result hovers beside the furnace; the bar over the mouth fills as it smelts.",
+  "work_plane": 6,
+  "idle_visible": false,
+  "camera": {
+    "position": [
+      8,
+      18.5,
+      -24
+    ],
+    "target": [
+      8,
+      7.8,
+      6
+    ],
+    "fov": 40
+  },
+  "interface": {
+    "hide_player": true,
+    "inventory_panel": false
+  },
+  "inventory_drawer": {
+    "side": "bottom",
+    "style": "minimal",
+    "always_open": true,
+    "compact": true,
+    "background": "#00000000",
+    "slot_color": "#8C1E140C",
+    "carry_size": 3
+  },
+  "nodes": [
+    {
+      "$comment": "The furnace itself, drawn by the scene while the block is hidden: its mouth open.",
+      "id": "body",
+      "pos": [
+        8,
+        0,
+        8
+      ],
+      "visual": {
+        "model": "handson_overgeared:diegesis/furnace/alloy_body",
+        "lit_as_block": true
+      },
+      "pickable": false,
+      "hidden": true
+    },
+    {
+      "$comment": "The door, hung on the mouth's left edge (scene x 13); code swings it open.",
+      "id": "door",
+      "pos": [
+        13,
+        3,
+        0
+      ],
+      "visual": {
+        "model": "handson_overgeared:diegesis/furnace/alloy_door",
+        "anchor": [
+          13,
+          3,
+          0
+        ],
+        "lit_as_block": true
+      },
+      "pickable": false,
+      "hidden": true
+    },
+    {
+      "id": "grate",
+      "pos": [
+        8,
+        0,
+        8
+      ],
+      "visual": {
+        "model": "handson_overgeared:diegesis/furnace/grate"
+      },
+      "pickable": false,
+      "hidden": true
+    },
+    {
+      "id": "coals",
+      "pos": [
+        8,
+        0,
+        8
+      ],
+      "visual": {
+        "model": "handson_overgeared:diegesis/furnace/coals"
+      },
+      "pickable": false,
+      "hidden": true
+    },
+    {
+      "id": "embers",
+      "pos": [
+        8,
+        0,
+        8
+      ],
+      "visual": {
+        "model": "handson_overgeared:diegesis/furnace/embers",
+        "emissive": true
+      },
+      "pickable": false,
+      "hidden": true
+    },
+    {
+      "id": "fire",
+      "pos": [
+        8,
+        3.9,
+        7.5
+      ],
+      "pickable": false,
+      "emitter": {
+        "particle": "diegesis:flame",
+        "rate": 9,
+        "velocity": [
+          0,
+          6,
+          0
+        ],
+        "spread": 3.2,
+        "scale": 2.2,
+        "enabled": false
+      },
+      "light": {
+        "level": 0,
+        "radius": 12,
+        "color": "#60FF9040",
+        "flicker": 0.25
+      }
+    },
+    {
+      "id": "fuel",
+      "pos": [
+        8,
+        3.75,
+        2.2
+      ],
+      "slot": {
+        "slot": "fuel[0]",
+        "size": 3.0,
+        "item_size": 3.0,
+        "counts": "always",
+        "count_facing": "front",
+        "ghost": [
+          "minecraft:coal",
+          "minecraft:charcoal",
+          "minecraft:coal_block",
+          "minecraft:blaze_rod"
+        ],
+        "ghost_alpha": 0.35,
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "id": "output",
+      "pos": [
+        -1.6,
+        9.5,
+        -2.0
+      ],
+      "slot": {
+        "slot": "output[0]",
+        "display": "floating",
+        "size": 3.8,
+        "item_size": 3.6,
+        "counts": "always",
+        "count_facing": "camera"
+      }
+    },
+    {
+      "id": "bar",
+      "pos": [
+        8,
+        13.5,
+        -0.06
+      ],
+      "pickable": false,
+      "hidden": true,
+      "scale": 0.62
+    },
+    {
+      "id": "input_0",
+      "pos": [
+        9.6,
+        6.02,
+        6.0
+      ],
+      "slot": {
+        "slot": "inputs[0]",
+        "size": 2.8,
+        "item_size": 2.6,
+        "counts": "hover",
+        "count_facing": "front",
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "id": "input_1",
+      "pos": [
+        6.4,
+        6.02,
+        6.0
+      ],
+      "slot": {
+        "slot": "inputs[1]",
+        "size": 2.8,
+        "item_size": 2.6,
+        "counts": "hover",
+        "count_facing": "front",
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "id": "input_2",
+      "pos": [
+        9.6,
+        6.02,
+        9.2
+      ],
+      "slot": {
+        "slot": "inputs[2]",
+        "size": 2.8,
+        "item_size": 2.6,
+        "counts": "hover",
+        "count_facing": "front",
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "id": "input_3",
+      "pos": [
+        6.4,
+        6.02,
+        9.2
+      ],
+      "slot": {
+        "slot": "inputs[3]",
+        "size": 2.8,
+        "item_size": 2.6,
+        "counts": "hover",
+        "count_facing": "front",
+        "idle_highlight": 0.25
+      }
+    }
+  ]
+}

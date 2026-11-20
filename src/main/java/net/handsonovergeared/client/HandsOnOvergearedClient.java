@@ -19,6 +19,10 @@ public final class HandsOnOvergearedClient {
 
     private static void setup() {
         DiegesisClient.registerBehavior(AnvilStation.ID, AnvilBehavior::new);
+        for (var furnace : new net.minecraft.resources.ResourceLocation[]{net.handsonovergeared.furnace.FurnaceStations.ALLOY_ID,
+                net.handsonovergeared.furnace.FurnaceStations.NETHER_ALLOY_ID, net.handsonovergeared.furnace.FurnaceStations.CASTING_ID}) {
+            DiegesisClient.registerBehavior(furnace, FurnaceBehavior::new);
+        }
         for (var effect : new net.minecraft.resources.ResourceLocation[]{AnvilStation.EFFECT_STRUCK, AnvilStation.EFFECT_FORGED,
                 AnvilStation.EFFECT_REFUSED, AnvilStation.EFFECT_STARTED}) {
             DiegesisClient.registerEffect(effect, (view, node, data) -> {

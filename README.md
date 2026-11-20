@@ -16,15 +16,20 @@ with no menu screen.
   fro. Strike while it is in the green zone, best in the gold one. Every strike speeds the marker up, narrows the zones
   and moves them, exactly as in Overgeared's minigame, with its settings, difficulties and quality thresholds. A floating
   *PERFECT! / GOOD / MISS* shows how each blow landed; at the last one the piece is made with its quality.
+- **The furnaces.** The alloy furnace, the nether alloy furnace and the casting furnace open as the furnaces of
+  Hands-On Vanilla: the block steps aside for a copy whose door swings open. What smelts lies on the grate in the mouth
+  (four places, nine in the nether furnace, the ore and the tool cast in the casting furnace), the fuel on the coals under
+  it, which glow and flame while it burns. A bar over the mouth fills as it smelts, the fuel left under it, and the result
+  hovers beside the furnace; taking it gives the experience the furnace stored.
 - **Everyone sees it.** Players nearby see the bar, the marker, the hammer blows and the sparks of whoever is forging.
 - **Nothing replaced.** The items stay in Overgeared's own anvil inventory. Sneaking + use keeps Overgeared's screen and
   its own minigame; hoppers, blueprints, quality, the creator's name, advancements and recipe unlocks work as before. Hot
   metal does not cool while you work at the anvil (as with its screen open). Recipes without quality are hammered blow by
   blow, with a progress strip. The mod adds no blocks or items: a player without it keeps the usual screen.
 
-| The work laid out on the anvil | A strike in rhythm | Left alone |
-|---|---|---|
-| ![The anvil station](docs/anvil.png) | ![A strike](docs/strike.png) | ![The anvil idle](docs/idle.png) |
+| The work laid out on the anvil | A strike in rhythm | Left alone | The alloy furnace |
+|---|---|---|---|
+| ![The anvil station](docs/anvil.png) | ![A strike](docs/strike.png) | ![The anvil idle](docs/idle.png) | ![The alloy furnace](docs/furnace.png) |
 
 ## Requirements
 
@@ -56,6 +61,8 @@ The jar is in `build/libs/`. `./gradlew runClient` starts a dev client with Over
   the last strike and lets Overgeared's own `increaseForgingProgress` make the piece.
 - `station/ForgeRhythm` is Overgeared's minigame made deterministic: zones from a seed and the strike count, the marker
   from where it was at the last strike, so every client draws the same bar from the station's data.
+- `furnace/` holds the furnaces: their stations, their logic (the fire and progress read through mixin accessors) and
+  `client/FurnaceBehavior`, which swings the door and draws the fire and the bars.
 - `client/AnvilBehavior` draws the hammer and its swing, the rhythm bar, the popups and the sparks.
 - `assets/handson_overgeared/diegesis/scenes/smithing_anvil.json` is the scene: camera, slots and nodes.
 

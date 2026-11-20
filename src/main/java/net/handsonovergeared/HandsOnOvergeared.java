@@ -15,6 +15,7 @@ public final class HandsOnOvergeared {
 
     public HandsOnOvergeared() {
         AnvilStation.register();
+        net.handsonovergeared.furnace.FurnaceStations.register();
     }
 
     public static ResourceLocation id(String path) {

@@ -119,6 +119,34 @@ public final class ShotDriver {
         });
         then("refill", 30, this::fillGrid);
         then("idle shot", 5, () -> shot("07_idle"));
+        then("leave anvil", 40, () -> {
+            Minecraft mc = Minecraft.getInstance();
+            if (mc.screen != null) {
+                mc.screen.keyPressed(GLFW.GLFW_KEY_ESCAPE, 0, 0);
+            }
+        });
+        then("build furnaces", 30, this::buildFurnaces);
+        String[] furnaces = {"alloy", "nether_alloy", "casting"};
+        for (int i = 0; i < 3; i++) {
+            BlockPos pos = FURNACES[i];
+            String name = furnaces[i];
+            then("stand " + name, 15, () -> server(player -> player.teleportTo(player.serverLevel(), pos.getX() + 0.5, pos.getY(),
+                    pos.getZ() + 1.7, 180.0F, 40.0F)));
+            then("aim " + name, 5, () -> Minecraft.getInstance().player.lookAt(
+                    net.minecraft.commands.arguments.EntityAnchorArgument.Anchor.EYES, new Vec3(pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5)));
+            then("open " + name, 80, ShotDriver::use);
+            then("shot " + name, 5, () -> shot("10_" + name));
+            then("later " + name, 60, () -> {
+            });
+            then("shot later " + name, 5, () -> shot("11_" + name + "_later"));
+            then("leave " + name, 30, () -> {
+                Minecraft mc = Minecraft.getInstance();
+                if (mc.screen != null) {
+                    mc.screen.keyPressed(GLFW.GLFW_KEY_ESCAPE, 0, 0);
+                }
+            });
+        }
+        then("closed shot", 5, () -> shot("12_closed"));
         then("quit", 5, () -> Minecraft.getInstance().stop());
     }
 
@@ -202,6 +230,42 @@ public final class ShotDriver {
             player.getInventory().setItem(2, new ItemStack(net.minecraft.world.item.Items.IRON_INGOT, 20));
             player.getInventory().setItem(3, new ItemStack(ModItems.COPPER_SMITHING_HAMMER.get()));
             player.getInventory().selected = 4;
+        });
+    }
+
+    private static final BlockPos[] FURNACES = {new BlockPos(4, -60, 0), new BlockPos(6, -60, 0), new BlockPos(8, -60, 0)};
+
+    /** Three furnaces in a row, their fronts to the south (Overgeared's facing names a furnace's back), stocked to smelt. */
+    private void buildFurnaces() {
+        server(player -> {
+            ServerLevel level = player.serverLevel();
+            net.minecraft.world.level.block.Block[] blocks = {ModBlocks.ALLOY_FURNACE.get(), ModBlocks.NETHER_ALLOY_FURNACE.get(),
+                    ModBlocks.CAST_FURNACE.get()};
+            for (int i = 0; i < 3; i++) {
+                BlockState state = blocks[i].defaultBlockState();
+                if (state.hasProperty(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING)) {
+                    state = state.setValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH);
+                }
+                level.setBlockAndUpdate(FURNACES[i], state);
+            }
+            if (level.getBlockEntity(FURNACES[0]) instanceof net.minecraft.world.Container alloy) {
+                alloy.setItem(0, new ItemStack(net.minecraft.world.item.Items.IRON_INGOT, 6));
+                alloy.setItem(1, new ItemStack(net.minecraft.world.item.Items.IRON_INGOT, 6));
+                alloy.setItem(2, new ItemStack(net.minecraft.world.item.Items.IRON_INGOT, 6));
+                alloy.setItem(3, new ItemStack(net.minecraft.world.item.Items.COAL, 2));
+                alloy.setItem(4, new ItemStack(net.minecraft.world.item.Items.COAL, 8));
+            }
+            if (level.getBlockEntity(FURNACES[1]) instanceof net.minecraft.world.Container nether) {
+                for (int i = 0; i < 4; i++) {
+                    nether.setItem(i, new ItemStack(net.minecraft.world.item.Items.NETHERITE_SCRAP, 1));
+                    nether.setItem(4 + i, new ItemStack(net.minecraft.world.item.Items.GOLD_INGOT, 1));
+                }
+                nether.setItem(9, new ItemStack(net.minecraft.world.item.Items.BLAZE_ROD, 4));
+            }
+            if (level.getBlockEntity(FURNACES[2]) instanceof net.minecraft.world.Container casting) {
+                casting.setItem(1, new ItemStack(net.minecraft.world.item.Items.COAL, 5));
+                casting.setItem(0, new ItemStack(net.minecraft.world.item.Items.RAW_GOLD, 4));
+            }
         });
     }
 
