@@ -1,9 +1,9 @@
 {
- "parent": "handson_overgeared:diegesis/furnace/door",
+ "parent": "handson_overgeared:diegesis/furnace/firebox_right",
  "textures": {
   "front": "overgeared:block/nether_alloy_furnace_front",
   "side": "overgeared:block/nether_alloy_furnace_side",
   "top": "overgeared:block/nether_alloy_furnace_side",
-  "inner": "minecraft:block/nether_bricks"
+  "lining": "handson_overgeared:block/furnace_lining"
  }
 }

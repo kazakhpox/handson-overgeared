@@ -1,20 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/Pocky-l/diegesis/main/docs/schema/scene.schema.json",
-  "$comment": "Overgeared's alloy furnace, worked as the furnaces of Hands-On Vanilla. The block is hidden while somebody works at it and the scene draws it with its mouth open (x 3-13, y 3-12, 12 deep), the door hung on the mouth's left. What smelts lies on the grate, the fuel on the coals under it at the front, and the result hovers beside the furnace; the bar over the mouth fills as it smelts.",
-  "work_plane": 6,
+  "$comment": "Overgeared's alloy furnace, worked as Hands-On Vanilla's furnace: the block is hidden and the scene draws it with its mouth (x 3-13, y 8-13, 10 deep) and firebox (y 1-5, 6 deep) open. The four ingredients stand on the grate in two rows, the back one on a raised ledge; the result at the right.",
+  "work_plane": 8,
   "idle_visible": false,
   "camera": {
     "position": [
-      8,
-      18.5,
-      -24
+      2,
+      16.5,
+      -27
     ],
     "target": [
       8,
-      7.8,
-      6
+      7.2,
+      4
     ],
-    "fov": 40
+    "fov": 38,
+    "interactive_at": 0.6
   },
   "interface": {
     "hide_player": true,
@@ -31,7 +32,7 @@
   },
   "nodes": [
     {
-      "$comment": "The furnace itself, drawn by the scene while the block is hidden: its mouth open.",
+      "$comment": "The furnace, drawn while the block is hidden: its mouth and firebox open, after Hands-On Vanilla's furnace. Code swaps in the lit model while it burns.",
       "id": "body",
       "pos": [
         8,
@@ -43,22 +44,26 @@
         "lit_as_block": true
       },
       "pickable": false,
-      "hidden": true
+      "hidden": true,
+      "extra": {
+        "unlit": "handson_overgeared:diegesis/furnace/alloy_body",
+        "lit": "handson_overgeared:diegesis/furnace/alloy_body_on"
+      }
     },
     {
-      "$comment": "The door, hung on the mouth's left edge (scene x 13); code swings it open.",
-      "id": "door",
+      "$comment": "Double doors on the mouth and the firebox, each leaf hung on its outer edge; closed, they are the furnace's front.",
+      "id": "mouth_right",
       "pos": [
-        13,
         3,
+        8,
         0
       ],
       "visual": {
-        "model": "handson_overgeared:diegesis/furnace/alloy_door",
+        "model": "handson_overgeared:diegesis/furnace/alloy_mouth_right",
         "anchor": [
-          13,
-          3,
-          0
+          0,
+          0,
+          8
         ],
         "lit_as_block": true
       },
@@ -66,41 +71,58 @@
       "hidden": true
     },
     {
-      "id": "grate",
+      "id": "mouth_left",
       "pos": [
+        13,
         8,
-        0,
-        8
+        0
       ],
       "visual": {
-        "model": "handson_overgeared:diegesis/furnace/grate"
+        "model": "handson_overgeared:diegesis/furnace/alloy_mouth_left",
+        "anchor": [
+          0,
+          0,
+          8
+        ],
+        "lit_as_block": true
       },
       "pickable": false,
       "hidden": true
     },
     {
-      "id": "coals",
+      "id": "firebox_right",
       "pos": [
-        8,
-        0,
-        8
+        3,
+        1,
+        0
       ],
       "visual": {
-        "model": "handson_overgeared:diegesis/furnace/coals"
+        "model": "handson_overgeared:diegesis/furnace/alloy_firebox_right",
+        "anchor": [
+          0,
+          0,
+          8
+        ],
+        "lit_as_block": true
       },
       "pickable": false,
       "hidden": true
     },
     {
-      "id": "embers",
+      "id": "firebox_left",
       "pos": [
-        8,
-        0,
-        8
+        13,
+        1,
+        0
       ],
       "visual": {
-        "model": "handson_overgeared:diegesis/furnace/embers",
-        "emissive": true
+        "model": "handson_overgeared:diegesis/furnace/alloy_firebox_left",
+        "anchor": [
+          0,
+          0,
+          8
+        ],
+        "lit_as_block": true
       },
       "pickable": false,
       "hidden": true
@@ -109,20 +131,20 @@
       "id": "fire",
       "pos": [
         8,
-        3.9,
-        7.5
+        1.6,
+        3
       ],
       "pickable": false,
       "emitter": {
         "particle": "diegesis:flame",
-        "rate": 9,
+        "rate": 8,
         "velocity": [
           0,
-          6,
+          5,
           0
         ],
-        "spread": 3.2,
-        "scale": 2.2,
+        "spread": 2.6,
+        "scale": 1.8,
         "enabled": false
       },
       "light": {
@@ -136,62 +158,48 @@
       "id": "fuel",
       "pos": [
         8,
-        3.75,
+        1.02,
         2.2
       ],
       "slot": {
         "slot": "fuel[0]",
-        "size": 3.0,
-        "item_size": 3.0,
+        "display": "upright",
+        "size": 2.8,
+        "item_size": 2.8,
         "counts": "always",
         "count_facing": "front",
+        "idle_highlight": 0.25,
         "ghost": [
           "minecraft:coal",
           "minecraft:charcoal",
           "minecraft:coal_block",
           "minecraft:blaze_rod"
         ],
-        "ghost_alpha": 0.35,
-        "idle_highlight": 0.25
+        "ghost_alpha": 0.3
       }
     },
     {
-      "id": "output",
+      "$comment": "How far it smelts, a strip along the grate's front lip; how much fuel is left, along the firebox's. Drawn by code.",
+      "id": "bars",
       "pos": [
-        -1.6,
-        9.5,
-        -2.0
-      ],
-      "slot": {
-        "slot": "output[0]",
-        "display": "floating",
-        "size": 3.8,
-        "item_size": 3.6,
-        "counts": "always",
-        "count_facing": "camera"
-      }
-    },
-    {
-      "id": "bar",
-      "pos": [
-        8,
-        13.5,
-        -0.06
+        0,
+        0,
+        0
       ],
       "pickable": false,
-      "hidden": true,
-      "scale": 0.62
+      "hidden": true
     },
     {
       "id": "input_0",
       "pos": [
-        9.6,
-        6.02,
-        6.0
+        12.0,
+        8.02,
+        2.6
       ],
       "slot": {
         "slot": "inputs[0]",
-        "size": 2.8,
+        "display": "upright",
+        "size": 2.6,
         "item_size": 2.6,
         "counts": "hover",
         "count_facing": "front",
@@ -201,13 +209,14 @@
     {
       "id": "input_1",
       "pos": [
-        6.4,
-        6.02,
-        6.0
+        9.6,
+        8.02,
+        2.6
       ],
       "slot": {
         "slot": "inputs[1]",
-        "size": 2.8,
+        "display": "upright",
+        "size": 2.6,
         "item_size": 2.6,
         "counts": "hover",
         "count_facing": "front",
@@ -217,13 +226,14 @@
     {
       "id": "input_2",
       "pos": [
-        9.6,
-        6.02,
-        9.2
+        11.4,
+        9.52,
+        7.4
       ],
       "slot": {
         "slot": "inputs[2]",
-        "size": 2.8,
+        "display": "upright",
+        "size": 2.6,
         "item_size": 2.6,
         "counts": "hover",
         "count_facing": "front",
@@ -233,17 +243,35 @@
     {
       "id": "input_3",
       "pos": [
-        6.4,
-        6.02,
-        9.2
+        9.0,
+        9.52,
+        7.4
       ],
       "slot": {
         "slot": "inputs[3]",
-        "size": 2.8,
+        "display": "upright",
+        "size": 2.6,
         "item_size": 2.6,
         "counts": "hover",
         "count_facing": "front",
         "idle_highlight": 0.25
+      }
+    },
+    {
+      "$comment": "The result stands at the mouth's right.",
+      "id": "output",
+      "pos": [
+        4.8,
+        8.02,
+        2.6
+      ],
+      "slot": {
+        "slot": "output[0]",
+        "display": "upright",
+        "size": 2.8,
+        "item_size": 2.8,
+        "counts": "always",
+        "count_facing": "front"
       }
     }
   ]

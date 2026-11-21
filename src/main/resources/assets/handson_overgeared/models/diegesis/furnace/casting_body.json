@@ -3,7 +3,6 @@
  "textures": {
   "front": "overgeared:block/casting_furnace_front",
   "side": "overgeared:block/casting_furnace_side",
-  "top": "overgeared:block/casting_furnace_top",
-  "inner": "minecraft:block/blackstone"
+  "top": "overgeared:block/casting_furnace_top"
  }
 }

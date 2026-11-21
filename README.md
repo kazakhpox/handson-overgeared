@@ -16,11 +16,12 @@ with no menu screen.
   fro. Strike while it is in the green zone, best in the gold one. Every strike speeds the marker up, narrows the zones
   and moves them, exactly as in Overgeared's minigame, with its settings, difficulties and quality thresholds. A floating
   *PERFECT! / GOOD / MISS* shows how each blow landed; at the last one the piece is made with its quality.
-- **The furnaces.** The alloy furnace, the nether alloy furnace and the casting furnace open as the furnaces of
-  Hands-On Vanilla: the block steps aside for a copy whose door swings open. What smelts lies on the grate in the mouth
-  (four places, nine in the nether furnace, the ore and the tool cast in the casting furnace), the fuel on the coals under
-  it, which glow and flame while it burns. A bar over the mouth fills as it smelts, the fuel left under it, and the result
-  hovers beside the furnace; taking it gives the experience the furnace stored.
+- **The furnaces.** The alloy furnace, the nether alloy furnace and the casting furnace open as the furnace of
+  Hands-On Vanilla: the block steps aside for a copy whose double doors swing open on its mouth and its firebox, cut where
+  Overgeared's own front draws them. What smelts stands on the grate in the mouth (two rows, the back one on a raised
+  ledge), the result at its right, the fuel among the coals of the firebox. While it burns the lining and the grate glow,
+  the coals turn to embers and flames lick up; a strip on the grate's front lip fills as it smelts, one on the firebox's
+  lip shows the fuel left. Taking the result gives the experience the furnace stored.
 - **Everyone sees it.** Players nearby see the bar, the marker, the hammer blows and the sparks of whoever is forging.
 - **Nothing replaced.** The items stay in Overgeared's own anvil inventory. Sneaking + use keeps Overgeared's screen and
   its own minigame; hoppers, blueprints, quality, the creator's name, advancements and recipe unlocks work as before. Hot
@@ -68,4 +69,5 @@ The jar is in `build/libs/`. `./gradlew runClient` starts a dev client with Over
 
 ## License
 
-MIT
+MIT. The furnace lining and grate textures come from
+[Hands-On Vanilla](https://github.com/Pocky-l/handson-vanilla) (MIT, Pocky).
