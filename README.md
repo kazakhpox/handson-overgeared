@@ -19,10 +19,10 @@ with no menu screen.
 - **The furnaces.** The alloy furnace, the nether alloy furnace and the casting furnace open as the furnace of
   Hands-On Vanilla: the block steps aside for a copy whose front is cut exactly where Overgeared's own texture draws its
   dark openings: the shallow vents (they glow while it burns), the firebox arch and the casting furnace's mouth. Iron
-  grille doors (after Hands-On Vanilla's) swing open on the arch and the mouth. The alloy furnaces take what they smelt in
-  a crucible sunk into the front of their top (two by two, or three by three), the result over the rim; the casting
+  grille doors (after Hands-On Vanilla's) swing open on the arch and the mouth. From the alloy furnaces' left vent a grate
+  slides out with the recipe laid on it (two by two, or three by three); the result stands in the right vent. The casting
   furnace takes its metal and its cast on the grate in its mouth. The fuel lies among the coals of the arch. While it
-  burns the lining glows, the coals turn to embers and flames lick up; a strip on the top (or on the mouth's lip) fills as
+  burns the lining glows, the coals turn to embers and flames lick up; a strip over the vents (or on the mouth's lip) fills as
   it smelts, one on the arch floor shows the fuel left. Taking the result gives the experience the furnace stored.
 - **Everyone sees it.** Players nearby see the bar, the marker, the hammer blows and the sparks of whoever is forging.
 - **Nothing replaced.** The items stay in Overgeared's own anvil inventory. Sneaking + use keeps Overgeared's screen and

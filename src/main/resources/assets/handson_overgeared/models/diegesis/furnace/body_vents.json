@@ -3,10 +3,44 @@
   "particle": "#side",
   "lining": "handson_overgeared:block/furnace_lining",
   "grate": "handson_overgeared:block/furnace_grate",
-  "embers": "minecraft:block/coal_block",
-  "crucible": "handson_overgeared:block/furnace_lining"
+  "embers": "minecraft:block/coal_block"
  },
  "elements": [
+  {
+   "from": [
+    0,
+    15,
+    0.0
+   ],
+   "to": [
+    16,
+    16,
+    6.0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#front",
+     "uv": [
+      0,
+      0,
+      16,
+      1
+     ]
+    },
+    "up": {
+     "texture": "#top"
+    },
+    "down": {
+     "texture": "#lining"
+    },
+    "east": {
+     "texture": "#side"
+    },
+    "west": {
+     "texture": "#side"
+    }
+   }
+  },
   {
    "from": [
     0,
@@ -29,7 +63,7 @@
      ]
     },
     "up": {
-     "texture": "#crucible"
+     "texture": "#lining"
     },
     "down": {
      "texture": "#lining"
@@ -151,7 +185,7 @@
    "from": [
     4,
     11,
-    1.5
+    4.0
    ],
    "to": [
     7,
@@ -248,35 +282,6 @@
   },
   {
    "from": [
-    9,
-    10,
-    1.5
-   ],
-   "to": [
-    13,
-    11,
-    6.0
-   ],
-   "faces": {
-    "north": {
-     "texture": "#lining"
-    },
-    "up": {
-     "texture": "#lining"
-    },
-    "down": {
-     "texture": "#lining"
-    },
-    "east": {
-     "texture": "#lining"
-    },
-    "west": {
-     "texture": "#lining"
-    }
-   }
-  },
-  {
-   "from": [
     8,
     10,
     0.0
@@ -314,7 +319,7 @@
    "from": [
     3,
     10,
-    1.5
+    4.0
    ],
    "to": [
     8,
@@ -411,35 +416,6 @@
   },
   {
    "from": [
-    9,
-    9,
-    1.5
-   ],
-   "to": [
-    13,
-    10,
-    6.0
-   ],
-   "faces": {
-    "north": {
-     "texture": "#lining"
-    },
-    "up": {
-     "texture": "#lining"
-    },
-    "down": {
-     "texture": "#lining"
-    },
-    "east": {
-     "texture": "#lining"
-    },
-    "west": {
-     "texture": "#lining"
-    }
-   }
-  },
-  {
-   "from": [
     8,
     9,
     0.0
@@ -477,7 +453,7 @@
    "from": [
     3,
     9,
-    1.5
+    4.0
    ],
    "to": [
     8,
@@ -993,7 +969,7 @@
    }
   },
   {
-   "name": "back_low",
+   "name": "back",
    "from": [
     0,
     0,
@@ -1001,7 +977,7 @@
    ],
    "to": [
     16,
-    15,
+    16,
     16
    ],
    "faces": {
@@ -1018,7 +994,7 @@
      "texture": "#side"
     },
     "up": {
-     "texture": "#crucible"
+     "texture": "#top"
     },
     "down": {
      "texture": "#top"
@@ -1165,135 +1141,6 @@
     },
     "south": {
      "texture": "#embers"
-    }
-   }
-  },
-  {
-   "name": "rim_front",
-   "from": [
-    3,
-    15,
-    0
-   ],
-   "to": [
-    13,
-    16,
-    2
-   ],
-   "faces": {
-    "north": {
-     "texture": "#front",
-     "uv": [
-      3,
-      0,
-      13,
-      1
-     ]
-    },
-    "up": {
-     "texture": "#top"
-    },
-    "south": {
-     "texture": "#lining"
-    },
-    "down": {
-     "texture": "#lining"
-    }
-   }
-  },
-  {
-   "name": "rim_right",
-   "from": [
-    0,
-    15,
-    0
-   ],
-   "to": [
-    3,
-    16,
-    16
-   ],
-   "faces": {
-    "north": {
-     "texture": "#front",
-     "uv": [
-      13,
-      0,
-      16,
-      1
-     ]
-    },
-    "south": {
-     "texture": "#side"
-    },
-    "west": {
-     "texture": "#side"
-    },
-    "east": {
-     "texture": "#lining"
-    },
-    "up": {
-     "texture": "#top"
-    }
-   }
-  },
-  {
-   "name": "rim_left",
-   "from": [
-    13,
-    15,
-    0
-   ],
-   "to": [
-    16,
-    16,
-    16
-   ],
-   "faces": {
-    "north": {
-     "texture": "#front",
-     "uv": [
-      0,
-      0,
-      3,
-      1
-     ]
-    },
-    "south": {
-     "texture": "#side"
-    },
-    "east": {
-     "texture": "#side"
-    },
-    "west": {
-     "texture": "#lining"
-    },
-    "up": {
-     "texture": "#top"
-    }
-   }
-  },
-  {
-   "name": "rim_back",
-   "from": [
-    3,
-    15,
-    10
-   ],
-   "to": [
-    13,
-    16,
-    16
-   ],
-   "faces": {
-    "north": {
-     "texture": "#lining"
-    },
-    "south": {
-     "texture": "#side"
-    },
-    "up": {
-     "texture": "#top"
     }
    }
   }

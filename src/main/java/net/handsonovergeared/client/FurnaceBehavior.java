@@ -16,8 +16,8 @@ import net.handsonovergeared.furnace.FurnaceStations;
 
 /**
  * An Overgeared furnace worked by hand, as the furnace of Hands-On Vanilla: the block steps aside for the scene's copy, whose double
- * grille doors swing open. Its front is cut where Overgeared's texture draws its openings; what smelts lies in the mouth or in a
- * crucible in its top, the fuel among the coals of the firebox arch; while it burns
+ * grille doors swing open. Its front is cut where Overgeared's texture draws its openings; what smelts lies in the mouth, or on a
+ * grate that slides out of a vent, the fuel among the coals of the firebox arch; while it burns
  * the lining and the grate glow, the coals turn to embers and flames lick up. A strip along the grate's front lip fills as it smelts,
  * and one along the firebox's lip shows the fuel left.
  */
@@ -70,6 +70,23 @@ public final class FurnaceBehavior implements StationBehavior {
                 node.rotateTo(0.0F, -OPEN_ANGLE * eased, 0.0F, 0.0F);
             });
         }
+        // The grate slides out of its vent narrow (it fits the hole) and spreads to its full size as it clears the wall.
+        view.node("tray").ifPresent(tray -> {
+            com.google.gson.JsonObject extra = tray.extra();
+            if (!extra.has("open") || !extra.has("closed")) {
+                return;
+            }
+            // The node stands where the grate is out; it is moved back from there (moveTo is an offset from its place).
+            com.google.gson.JsonArray from = extra.getAsJsonArray("closed");
+            com.google.gson.JsonArray to = extra.getAsJsonArray("open");
+            float narrow = extra.has("closed_scale") ? extra.get("closed_scale").getAsFloat() : 0.5F;
+            float back = 1.0F - eased;
+            tray.setVisible(shown && open > 0.0F);
+            tray.moveTo(back * (from.get(0).getAsFloat() - to.get(0).getAsFloat()),
+                    back * (from.get(1).getAsFloat() - to.get(1).getAsFloat()),
+                    back * (from.get(2).getAsFloat() - to.get(2).getAsFloat()), 0.0F);
+            tray.scaleTo(Mth.lerp(eased, narrow, 1.0F), 0.0F);
+        });
 
         CompoundTag data = view.state().data();
         int burn = data.getInt(FurnaceStations.BURN);
@@ -121,7 +138,7 @@ public final class FurnaceBehavior implements StationBehavior {
 
     /**
      * The two strips, in scene pixels, where the scene's {@code bars} node says ({@code extra}): the smelting standing on the lip of the
-     * mouth, or lying on the top behind a crucible ({@code flat}); the fuel standing on the floor of the firebox arch. Each fills from
+     * mouth, or lying on the top ({@code flat}); the fuel standing on the floor of the firebox arch. Each fills from
      * the screen's left (+X).
      */
     private static MeshShape strips(com.google.gson.JsonObject config, float cook, boolean smelting, float fuel) {

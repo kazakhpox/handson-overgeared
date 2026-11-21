@@ -1,20 +1,20 @@
 {
   "$schema": "https://raw.githubusercontent.com/Pocky-l/diegesis/main/docs/schema/scene.schema.json",
-  "$comment": "Overgeared's alloy furnace. The block is hidden and the scene draws it with its front cut where the texture draws its openings: two shallow vents that glow while it burns, and the firebox arch, 6 deep, its fuel among the coals. What it smelts lies in a crucible sunk a pixel into the front of its top (two by two), the result over the right rim.",
-  "work_plane": 15,
+  "$comment": "Overgeared's alloy furnace. The block is hidden and the scene draws it with its front cut where the texture draws its openings: two shallow vents that glow while it burns, and the firebox arch, 6 deep, its fuel among the coals. What it smelts lies on a grate that slides out of the left vent (two by two), the result stands in the right vent; a strip over the vents shows the smelting.",
+  "work_plane": 9.6,
   "idle_visible": false,
   "camera": {
     "position": [
-      6,
-      29,
-      -17
+      7,
+      20,
+      -27
     ],
     "target": [
       8,
-      8.5,
-      7
+      6.5,
+      0
     ],
-    "fov": 40,
+    "fov": 42,
     "interactive_at": 0.6
   },
   "interface": {
@@ -139,84 +139,122 @@
       }
     },
     {
-      "id": "input_0",
+      "$comment": "The grate that slides out of the left vent when the furnace opens, the recipe laid out on it; it comes out of the vent narrow and spreads as it clears the wall. Code moves it between extra.closed and extra.open.",
+      "id": "tray",
       "pos": [
-        9.6,
-        15.02,
-        4.4
+        11,
+        9.0,
+        0.5
       ],
-      "slot": {
-        "slot": "inputs[0]",
-        "size": 2.8,
-        "item_size": 2.8,
-        "counts": "hover",
-        "count_facing": "camera",
-        "idle_highlight": 0.25
-      }
+      "visual": {
+        "model": "handson_overgeared:diegesis/furnace/tray_small",
+        "anchor": [
+          8,
+          0,
+          16
+        ]
+      },
+      "pickable": false,
+      "hidden": true,
+      "extra": {
+        "open": [
+          11,
+          9.0,
+          0.5
+        ],
+        "closed": [
+          11,
+          9.0,
+          5.5
+        ],
+        "closed_scale": 0.5
+      },
+      "children": [
+        {
+          "id": "input_0",
+          "pos": [
+            1.95,
+            0.62,
+            -2.05
+          ],
+          "slot": {
+            "slot": "inputs[0]",
+            "size": 3.2,
+            "item_size": 3.2,
+            "counts": "hover",
+            "count_facing": "camera",
+            "idle_highlight": 0.25,
+            "display": "flat"
+          }
+        },
+        {
+          "id": "input_1",
+          "pos": [
+            -1.95,
+            0.62,
+            -2.05
+          ],
+          "slot": {
+            "slot": "inputs[1]",
+            "size": 3.2,
+            "item_size": 3.2,
+            "counts": "hover",
+            "count_facing": "camera",
+            "idle_highlight": 0.25,
+            "display": "flat"
+          }
+        },
+        {
+          "id": "input_2",
+          "pos": [
+            1.95,
+            0.62,
+            -5.95
+          ],
+          "slot": {
+            "slot": "inputs[2]",
+            "size": 3.2,
+            "item_size": 3.2,
+            "counts": "hover",
+            "count_facing": "camera",
+            "idle_highlight": 0.25,
+            "display": "flat"
+          }
+        },
+        {
+          "id": "input_3",
+          "pos": [
+            -1.95,
+            0.62,
+            -5.95
+          ],
+          "slot": {
+            "slot": "inputs[3]",
+            "size": 3.2,
+            "item_size": 3.2,
+            "counts": "hover",
+            "count_facing": "camera",
+            "idle_highlight": 0.25,
+            "display": "flat"
+          }
+        }
+      ]
     },
     {
-      "id": "input_1",
-      "pos": [
-        6.4,
-        15.02,
-        4.4
-      ],
-      "slot": {
-        "slot": "inputs[1]",
-        "size": 2.8,
-        "item_size": 2.8,
-        "counts": "hover",
-        "count_facing": "camera",
-        "idle_highlight": 0.25
-      }
-    },
-    {
-      "id": "input_2",
-      "pos": [
-        9.6,
-        15.02,
-        7.6
-      ],
-      "slot": {
-        "slot": "inputs[2]",
-        "size": 2.8,
-        "item_size": 2.8,
-        "counts": "hover",
-        "count_facing": "camera",
-        "idle_highlight": 0.25
-      }
-    },
-    {
-      "id": "input_3",
-      "pos": [
-        6.4,
-        15.02,
-        7.6
-      ],
-      "slot": {
-        "slot": "inputs[3]",
-        "size": 2.8,
-        "item_size": 2.8,
-        "counts": "hover",
-        "count_facing": "camera",
-        "idle_highlight": 0.25
-      }
-    },
-    {
-      "$comment": "The result hovers over the crucible's right rim.",
+      "$comment": "The result, standing in the right vent.",
       "id": "output",
       "pos": [
-        1.6,
-        17.0,
-        4.5
+        5.5,
+        9.02,
+        2.2
       ],
       "slot": {
         "slot": "output[0]",
-        "display": "floating",
-        "size": 3.2,
-        "item_size": 3.0,
+        "display": "upright",
+        "size": 2.6,
+        "item_size": 2.4,
         "counts": "always",
-        "count_facing": "camera"
+        "count_facing": "front"
       }
     },
     {
@@ -231,10 +269,9 @@
       "hidden": true,
       "extra": {
         "smelt": {
-          "flat": true,
-          "y": 16.02,
-          "from": 11.0,
-          "to": 12.0
+          "y0": 12.15,
+          "y1": 12.85,
+          "z": -0.06
         },
         "fuel": {
           "y0": 1.05,
