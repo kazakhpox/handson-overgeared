@@ -1,9 +1,3 @@
 {
- "parent": "handson_overgeared:diegesis/furnace/firebox_right",
- "textures": {
-  "front": "overgeared:block/brick_alloy_furnace_front",
-  "side": "overgeared:block/brick_alloy_furnace_side",
-  "top": "overgeared:block/brick_alloy_furnace_side",
-  "lining": "handson_overgeared:block/furnace_lining"
- }
+ "parent": "handson_overgeared:diegesis/furnace/firebox_right"
 }

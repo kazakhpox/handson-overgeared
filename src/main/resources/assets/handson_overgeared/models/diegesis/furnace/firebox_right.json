@@ -1,13 +1,15 @@
 {
+ "render_type": "minecraft:cutout",
  "textures": {
-  "particle": "#side"
+  "particle": "minecraft:block/iron_block",
+  "door": "handson_overgeared:block/furnace_door"
  },
  "elements": [
   {
    "from": [
     0,
     0,
-    7.4
+    8
    ],
    "to": [
     5,
@@ -16,57 +18,21 @@
    ],
    "faces": {
     "north": {
-     "texture": "#front",
+     "texture": "#door",
      "uv": [
-      8,
-      11,
-      13,
-      15
+      5,
+      0,
+      10,
+      4
      ]
     },
     "south": {
-     "texture": "#side",
+     "texture": "#door",
      "uv": [
-      3,
-      11,
-      8,
-      15
-     ]
-    },
-    "east": {
-     "texture": "#side",
-     "uv": [
-      6,
-      11,
-      6.6,
-      15
-     ]
-    },
-    "west": {
-     "texture": "#side",
-     "uv": [
-      6,
-      11,
-      6.6,
-      15
-     ]
-    },
-    "up": {
-     "texture": "#side",
-     "uv": [
-      8,
-      11,
-      13,
-      11.6
-     ]
-    },
-    "down": {
-     "texture": "#side",
-     "uv": [
-      8,
-      14.4,
-      13,
-      15
+      10,
+      0,
+      5,
+      4
      ]
     }
    }

@@ -17,7 +17,7 @@ with no menu screen.
   and moves them, exactly as in Overgeared's minigame, with its settings, difficulties and quality thresholds. A floating
   *PERFECT! / GOOD / MISS* shows how each blow landed; at the last one the piece is made with its quality.
 - **The furnaces.** The alloy furnace, the nether alloy furnace and the casting furnace open as the furnace of
-  Hands-On Vanilla: the block steps aside for a copy whose double doors swing open on its mouth and its firebox, cut where
+  Hands-On Vanilla: the block steps aside for a copy whose iron grille doors (after Hands-On Vanilla's) swing open on its mouth and its firebox, cut where
   Overgeared's own front draws them. What smelts stands on the grate in the mouth (two rows, the back one on a raised
   ledge), the result at its right, the fuel among the coals of the firebox. While it burns the lining and the grate glow,
   the coals turn to embers and flames lick up; a strip on the grate's front lip fills as it smelts, one on the firebox's
