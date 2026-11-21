@@ -16,7 +16,8 @@ import net.handsonovergeared.furnace.FurnaceStations;
 
 /**
  * An Overgeared furnace worked by hand, as the furnace of Hands-On Vanilla: the block steps aside for the scene's copy, whose double
- * doors swing open on the mouth and the firebox. Inside, what smelts stands on the grate and the fuel in the firebox; while it burns
+ * grille doors swing open. Its front is cut where Overgeared's texture draws its openings; what smelts lies in the mouth or in a
+ * crucible in its top, the fuel among the coals of the firebox arch; while it burns
  * the lining and the grate glow, the coals turn to embers and flames lick up. A strip along the grate's front lip fills as it smelts,
  * and one along the firebox's lip shows the fuel left.
  */
@@ -113,42 +114,81 @@ public final class FurnaceBehavior implements StationBehavior {
             boolean visible = shown && open > 0.6F;
             bars.setVisible(visible);
             if (visible) {
-                bars.setShape(strips(Mth.clamp(shownCook, 0.0F, 1.0F), cookMax > 0, lit ? shownBurn : 0.0F), BAR_TEXTURE, true);
+                bars.setShape(strips(bars.extra(), Mth.clamp(shownCook, 0.0F, 1.0F), cookMax > 0, lit ? shownBurn : 0.0F), BAR_TEXTURE, true);
             }
         }
     }
 
     /**
-     * The two strips, in scene pixels facing the front (-Z): the smelting along the grate's front lip in the mouth (y 8), the fuel along
-     * the firebox's lip (y 1); each fills from the screen's left (+X).
+     * The two strips, in scene pixels, where the scene's {@code bars} node says ({@code extra}): the smelting standing on the lip of the
+     * mouth, or lying on the top behind a crucible ({@code flat}); the fuel standing on the floor of the firebox arch. Each fills from
+     * the screen's left (+X).
      */
-    private static MeshShape strips(float cook, boolean smelting, float fuel) {
+    private static MeshShape strips(com.google.gson.JsonObject config, float cook, boolean smelting, float fuel) {
         MeshShape.Builder mesh = MeshShape.builder();
-        strip(mesh, 8.05F, 8.75F, smelting ? cook : 0.0F, 6);
-        strip(mesh, 1.05F, 1.55F, fuel, 7);
+        if (config.has("smelt")) {
+            com.google.gson.JsonObject smelt = config.getAsJsonObject("smelt");
+            float fill = smelting ? cook : 0.0F;
+            if (smelt.has("flat") && smelt.get("flat").getAsBoolean()) {
+                lying(mesh, smelt.get("y").getAsFloat(), smelt.get("from").getAsFloat(), smelt.get("to").getAsFloat(), fill, 6);
+            } else {
+                standing(mesh, smelt.get("y0").getAsFloat(), smelt.get("y1").getAsFloat(), smelt.get("z").getAsFloat(), fill, 6);
+            }
+        }
+        if (config.has("fuel")) {
+            com.google.gson.JsonObject strip = config.getAsJsonObject("fuel");
+            standing(mesh, strip.get("y0").getAsFloat(), strip.get("y1").getAsFloat(), strip.get("z").getAsFloat(), fuel, 7);
+        }
         return mesh.build();
     }
 
-    private static void strip(MeshShape.Builder mesh, float y0, float y1, float fill, int swatch) {
-        float left = 12.6F;
-        float right = 3.4F;
-        rect(mesh, left, right, y0, y1, 0.3F, 0);
-        rect(mesh, left - 0.15F, right + 0.15F, y0 + 0.12F, y1 - 0.12F, 0.34F, 1);
+    private static final float LEFT = 12.4F;
+    private static final float RIGHT = 3.6F;
+
+    /** A strip standing up at {@code z}, facing the front. */
+    private static void standing(MeshShape.Builder mesh, float y0, float y1, float z, float fill, int swatch) {
+        front(mesh, LEFT, RIGHT, y0, y1, z, 0);
+        front(mesh, LEFT - 0.15F, RIGHT + 0.15F, y0 + 0.1F, y1 - 0.1F, z - 0.04F, 1);
         if (fill > 0.0F) {
-            float end = left - 0.15F - (left - right - 0.3F) * fill;
-            rect(mesh, left - 0.15F, end, y0 + 0.12F, y1 - 0.12F, 0.38F, swatch);
+            front(mesh, LEFT - 0.15F, LEFT - 0.15F - (LEFT - RIGHT - 0.3F) * fill, y0 + 0.1F, y1 - 0.1F, z - 0.08F, swatch);
         }
     }
 
-    /** A rectangle facing -Z, {@code depth} in front of its plane, from {@code left} (screen left, +X) to {@code right}. */
-    private static void rect(MeshShape.Builder mesh, float left, float right, float y0, float y1, float depth, int swatch) {
-        float u = ((swatch % 4) * 4 + 2) / 16.0F;
-        float v = ((swatch / 4) * 4 + 2) / 16.0F;
-        // In the mouth, a little behind its front face: the strip stands on the lip, inside the opening.
-        float z = 0.9F - depth;
+    /** A strip lying at height {@code y}, from {@code z0} (front) to {@code z1}, facing up. */
+    private static void lying(MeshShape.Builder mesh, float y, float z0, float z1, float fill, int swatch) {
+        up(mesh, LEFT, RIGHT, z0, z1, y, 0);
+        up(mesh, LEFT - 0.15F, RIGHT + 0.15F, z0 + 0.12F, z1 - 0.12F, y + 0.03F, 1);
+        if (fill > 0.0F) {
+            up(mesh, LEFT - 0.15F, LEFT - 0.15F - (LEFT - RIGHT - 0.3F) * fill, z0 + 0.12F, z1 - 0.12F, y + 0.06F, swatch);
+        }
+    }
+
+    private static float u(int swatch) {
+        return ((swatch % 4) * 4 + 2) / 16.0F;
+    }
+
+    private static float v(int swatch) {
+        return ((swatch / 4) * 4 + 2) / 16.0F;
+    }
+
+    /** A rectangle facing -Z at {@code z}, from {@code left} (screen left, +X) to {@code right}. */
+    private static void front(MeshShape.Builder mesh, float left, float right, float y0, float y1, float z, int swatch) {
+        float u = u(swatch);
+        float v = v(swatch);
         mesh.corner(left, y0, z, u, v, 0, 0, -1)
                 .corner(right, y0, z, u, v, 0, 0, -1)
                 .corner(right, y1, z, u, v, 0, 0, -1)
                 .corner(left, y1, z, u, v, 0, 0, -1);
+    }
+
+    /** A rectangle facing up at {@code y}, from {@code left} (screen left, +X) to {@code right}, {@code z0} (front) to {@code z1}. */
+    private static void up(MeshShape.Builder mesh, float left, float right, float z0, float z1, float y, int swatch) {
+        float u = u(swatch);
+        float v = v(swatch);
+        // Wound so that the face points up (left lies at +X): front left, front right, back right, back left.
+        mesh.corner(left, y, z0, u, v, 0, 1, 0)
+                .corner(right, y, z0, u, v, 0, 1, 0)
+                .corner(right, y, z1, u, v, 0, 1, 0)
+                .corner(left, y, z1, u, v, 0, 1, 0);
     }
 }

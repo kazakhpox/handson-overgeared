@@ -1,20 +1,20 @@
 {
   "$schema": "https://raw.githubusercontent.com/Pocky-l/diegesis/main/docs/schema/scene.schema.json",
-  "$comment": "Overgeared's alloy furnace, worked as Hands-On Vanilla's furnace: the block is hidden and the scene draws it with its mouth (x 3-13, y 8-13, 10 deep) and firebox (y 1-5, 6 deep) open. The four ingredients stand on the grate in two rows, the back one on a raised ledge; the result at the right.",
-  "work_plane": 8,
+  "$comment": "Overgeared's alloy furnace. The block is hidden and the scene draws it with its front cut where the texture draws its openings: two shallow vents that glow while it burns, and the firebox arch, 6 deep, its fuel among the coals. What it smelts lies in a crucible sunk a pixel into the front of its top (two by two), the result over the right rim.",
+  "work_plane": 15,
   "idle_visible": false,
   "camera": {
     "position": [
-      2,
-      16.5,
-      -27
+      6,
+      29,
+      -17
     ],
     "target": [
       8,
-      7.2,
-      4
+      8.5,
+      7
     ],
-    "fov": 38,
+    "fov": 40,
     "interactive_at": 0.6
   },
   "interface": {
@@ -32,7 +32,7 @@
   },
   "nodes": [
     {
-      "$comment": "The furnace, drawn while the block is hidden: its mouth and firebox open, after Hands-On Vanilla's furnace. Code swaps in the lit model while it burns.",
+      "$comment": "The furnace, drawn while the block is hidden: its front cut where Overgeared's texture draws its openings, pixel by pixel. Code swaps in the lit model while it burns.",
       "id": "body",
       "pos": [
         8,
@@ -51,45 +51,7 @@
       }
     },
     {
-      "$comment": "Double doors on the mouth and the firebox, each leaf hung on its outer edge; closed, they are the furnace's front.",
-      "id": "mouth_right",
-      "pos": [
-        3,
-        8,
-        0
-      ],
-      "visual": {
-        "model": "handson_overgeared:diegesis/furnace/alloy_mouth_right",
-        "anchor": [
-          0,
-          0,
-          8
-        ],
-        "lit_as_block": true
-      },
-      "pickable": false,
-      "hidden": true
-    },
-    {
-      "id": "mouth_left",
-      "pos": [
-        13,
-        8,
-        0
-      ],
-      "visual": {
-        "model": "handson_overgeared:diegesis/furnace/alloy_mouth_left",
-        "anchor": [
-          0,
-          0,
-          8
-        ],
-        "lit_as_block": true
-      },
-      "pickable": false,
-      "hidden": true
-    },
-    {
+      "$comment": "Iron grille doors on the firebox arch, each leaf hung on its outer edge.",
       "id": "firebox_right",
       "pos": [
         3,
@@ -97,13 +59,12 @@
         0
       ],
       "visual": {
-        "model": "handson_overgeared:diegesis/furnace/alloy_firebox_right",
+        "model": "handson_overgeared:diegesis/furnace/firebox_right",
         "anchor": [
           0,
           0,
           8
-        ],
-        "lit_as_block": true
+        ]
       },
       "pickable": false,
       "hidden": true
@@ -116,13 +77,12 @@
         0
       ],
       "visual": {
-        "model": "handson_overgeared:diegesis/furnace/alloy_firebox_left",
+        "model": "handson_overgeared:diegesis/furnace/firebox_left",
         "anchor": [
           0,
           0,
           8
-        ],
-        "lit_as_block": true
+        ]
       },
       "pickable": false,
       "hidden": true
@@ -131,7 +91,7 @@
       "id": "fire",
       "pos": [
         8,
-        1.6,
+        1.4,
         3
       ],
       "pickable": false,
@@ -140,11 +100,11 @@
         "rate": 8,
         "velocity": [
           0,
-          5,
+          4,
           0
         ],
-        "spread": 2.6,
-        "scale": 1.8,
+        "spread": 2.2,
+        "scale": 1.6,
         "enabled": false
       },
       "light": {
@@ -159,13 +119,13 @@
       "pos": [
         8,
         1.02,
-        2.2
+        2.4
       ],
       "slot": {
         "slot": "fuel[0]",
         "display": "upright",
-        "size": 2.8,
-        "item_size": 2.8,
+        "size": 2.4,
+        "item_size": 2.2,
         "counts": "always",
         "count_facing": "front",
         "idle_highlight": 0.25,
@@ -179,7 +139,88 @@
       }
     },
     {
-      "$comment": "How far it smelts, a strip along the grate's front lip; how much fuel is left, along the firebox's. Drawn by code.",
+      "id": "input_0",
+      "pos": [
+        9.6,
+        15.02,
+        4.4
+      ],
+      "slot": {
+        "slot": "inputs[0]",
+        "size": 2.8,
+        "item_size": 2.8,
+        "counts": "hover",
+        "count_facing": "camera",
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "id": "input_1",
+      "pos": [
+        6.4,
+        15.02,
+        4.4
+      ],
+      "slot": {
+        "slot": "inputs[1]",
+        "size": 2.8,
+        "item_size": 2.8,
+        "counts": "hover",
+        "count_facing": "camera",
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "id": "input_2",
+      "pos": [
+        9.6,
+        15.02,
+        7.6
+      ],
+      "slot": {
+        "slot": "inputs[2]",
+        "size": 2.8,
+        "item_size": 2.8,
+        "counts": "hover",
+        "count_facing": "camera",
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "id": "input_3",
+      "pos": [
+        6.4,
+        15.02,
+        7.6
+      ],
+      "slot": {
+        "slot": "inputs[3]",
+        "size": 2.8,
+        "item_size": 2.8,
+        "counts": "hover",
+        "count_facing": "camera",
+        "idle_highlight": 0.25
+      }
+    },
+    {
+      "$comment": "The result hovers over the crucible's right rim.",
+      "id": "output",
+      "pos": [
+        1.6,
+        17.0,
+        4.5
+      ],
+      "slot": {
+        "slot": "output[0]",
+        "display": "floating",
+        "size": 3.2,
+        "item_size": 3.0,
+        "counts": "always",
+        "count_facing": "camera"
+      }
+    },
+    {
+      "$comment": "The smelting strip lies on the top before the crucible; the fuel strip on the arch's floor. Drawn by code.",
       "id": "bars",
       "pos": [
         0,
@@ -187,91 +228,19 @@
         0
       ],
       "pickable": false,
-      "hidden": true
-    },
-    {
-      "id": "input_0",
-      "pos": [
-        12.0,
-        8.02,
-        2.6
-      ],
-      "slot": {
-        "slot": "inputs[0]",
-        "display": "upright",
-        "size": 2.6,
-        "item_size": 2.6,
-        "counts": "hover",
-        "count_facing": "front",
-        "idle_highlight": 0.25
-      }
-    },
-    {
-      "id": "input_1",
-      "pos": [
-        9.6,
-        8.02,
-        2.6
-      ],
-      "slot": {
-        "slot": "inputs[1]",
-        "display": "upright",
-        "size": 2.6,
-        "item_size": 2.6,
-        "counts": "hover",
-        "count_facing": "front",
-        "idle_highlight": 0.25
-      }
-    },
-    {
-      "id": "input_2",
-      "pos": [
-        11.4,
-        9.52,
-        7.4
-      ],
-      "slot": {
-        "slot": "inputs[2]",
-        "display": "upright",
-        "size": 2.6,
-        "item_size": 2.6,
-        "counts": "hover",
-        "count_facing": "front",
-        "idle_highlight": 0.25
-      }
-    },
-    {
-      "id": "input_3",
-      "pos": [
-        9.0,
-        9.52,
-        7.4
-      ],
-      "slot": {
-        "slot": "inputs[3]",
-        "display": "upright",
-        "size": 2.6,
-        "item_size": 2.6,
-        "counts": "hover",
-        "count_facing": "front",
-        "idle_highlight": 0.25
-      }
-    },
-    {
-      "$comment": "The result stands at the mouth's right.",
-      "id": "output",
-      "pos": [
-        4.8,
-        8.02,
-        2.6
-      ],
-      "slot": {
-        "slot": "output[0]",
-        "display": "upright",
-        "size": 2.8,
-        "item_size": 2.8,
-        "counts": "always",
-        "count_facing": "front"
+      "hidden": true,
+      "extra": {
+        "smelt": {
+          "flat": true,
+          "y": 16.02,
+          "from": 11.0,
+          "to": 12.0
+        },
+        "fuel": {
+          "y0": 1.05,
+          "y1": 1.5,
+          "z": 0.6
+        }
       }
     }
   ]

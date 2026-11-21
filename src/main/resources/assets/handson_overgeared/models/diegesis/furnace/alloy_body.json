@@ -1,5 +1,5 @@
 {
- "parent": "handson_overgeared:diegesis/furnace/body_tiered",
+ "parent": "handson_overgeared:diegesis/furnace/body_crucible",
  "textures": {
   "front": "overgeared:block/brick_alloy_furnace_front",
   "side": "overgeared:block/brick_alloy_furnace_side",

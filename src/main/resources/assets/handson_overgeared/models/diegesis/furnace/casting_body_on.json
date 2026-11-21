@@ -3,6 +3,7 @@
  "textures": {
   "lining": "handson_overgeared:block/furnace_lining_lit",
   "grate": "handson_overgeared:block/furnace_grate_lit",
-  "embers": "minecraft:block/magma"
+  "embers": "minecraft:block/magma",
+  "crucible": "handson_overgeared:block/furnace_lining_lit"
  }
 }

@@ -17,11 +17,13 @@ with no menu screen.
   and moves them, exactly as in Overgeared's minigame, with its settings, difficulties and quality thresholds. A floating
   *PERFECT! / GOOD / MISS* shows how each blow landed; at the last one the piece is made with its quality.
 - **The furnaces.** The alloy furnace, the nether alloy furnace and the casting furnace open as the furnace of
-  Hands-On Vanilla: the block steps aside for a copy whose iron grille doors (after Hands-On Vanilla's) swing open on its mouth and its firebox, cut where
-  Overgeared's own front draws them. What smelts stands on the grate in the mouth (two rows, the back one on a raised
-  ledge), the result at its right, the fuel among the coals of the firebox. While it burns the lining and the grate glow,
-  the coals turn to embers and flames lick up; a strip on the grate's front lip fills as it smelts, one on the firebox's
-  lip shows the fuel left. Taking the result gives the experience the furnace stored.
+  Hands-On Vanilla: the block steps aside for a copy whose front is cut exactly where Overgeared's own texture draws its
+  dark openings: the shallow vents (they glow while it burns), the firebox arch and the casting furnace's mouth. Iron
+  grille doors (after Hands-On Vanilla's) swing open on the arch and the mouth. The alloy furnaces take what they smelt in
+  a crucible sunk into the front of their top (two by two, or three by three), the result over the rim; the casting
+  furnace takes its metal and its cast on the grate in its mouth. The fuel lies among the coals of the arch. While it
+  burns the lining glows, the coals turn to embers and flames lick up; a strip on the top (or on the mouth's lip) fills as
+  it smelts, one on the arch floor shows the fuel left. Taking the result gives the experience the furnace stored.
 - **Everyone sees it.** Players nearby see the bar, the marker, the hammer blows and the sparks of whoever is forging.
 - **Nothing replaced.** The items stay in Overgeared's own anvil inventory. Sneaking + use keeps Overgeared's screen and
   its own minigame; hoppers, blueprints, quality, the creator's name, advancements and recipe unlocks work as before. Hot
