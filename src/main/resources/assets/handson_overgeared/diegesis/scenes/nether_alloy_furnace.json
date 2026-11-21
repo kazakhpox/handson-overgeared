@@ -343,7 +343,7 @@
       }
     },
     {
-      "$comment": "The smelting strip lies on the top before the crucible; the fuel strip on the arch's floor. Drawn by code.",
+      "$comment": "The smelting strip stands on the front over the vents; the fuel strip on the arch's floor. Drawn by code.",
       "id": "bars",
       "pos": [
         0,

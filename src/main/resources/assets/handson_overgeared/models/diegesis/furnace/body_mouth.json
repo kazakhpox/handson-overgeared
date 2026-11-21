@@ -3,8 +3,7 @@
   "particle": "#side",
   "lining": "handson_overgeared:block/furnace_lining",
   "grate": "handson_overgeared:block/furnace_grate",
-  "embers": "minecraft:block/coal_block",
-  "crucible": "handson_overgeared:block/furnace_lining"
+  "embers": "minecraft:block/coal_block"
  },
  "elements": [
   {
